@@ -20,8 +20,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-06-07T23:14:47+0300",
-    comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
+    date = "2025-06-08T00:24:17+0300",
+    comments = "version: 1.6.3, compiler: Eclipse JDT (IDE) 3.42.0.v20250514-1000, environment: Java 21.0.2 (Oracle Corporation)"
 )
 @Component
 public class PostMapperImpl implements PostMapper {
@@ -37,13 +37,13 @@ public class PostMapperImpl implements PostMapper {
         postDto.author( userToAuthorDto( post.getAuthor() ) );
         postDto.category( categoryToCategoryDto( post.getCategory() ) );
         postDto.tags( tagSetToTagResponseSet( post.getTags() ) );
-        postDto.id( post.getId() );
-        postDto.title( post.getTitle() );
         postDto.content( post.getContent() );
-        postDto.readingTime( post.getReadingTime() );
         postDto.createdAt( post.getCreatedAt() );
-        postDto.updatedAt( post.getUpdatedAt() );
+        postDto.id( post.getId() );
+        postDto.readingTime( post.getReadingTime() );
         postDto.status( post.getStatus() );
+        postDto.title( post.getTitle() );
+        postDto.updatedAt( post.getUpdatedAt() );
 
         return postDto.build();
     }
@@ -56,14 +56,14 @@ public class PostMapperImpl implements PostMapper {
 
         CreatePostRequest.CreatePostRequestBuilder createPostRequest = CreatePostRequest.builder();
 
-        createPostRequest.title( dto.getTitle() );
-        createPostRequest.content( dto.getContent() );
         createPostRequest.categoryId( dto.getCategoryId() );
+        createPostRequest.content( dto.getContent() );
+        createPostRequest.status( dto.getStatus() );
         Set<UUID> set = dto.getTagIds();
         if ( set != null ) {
             createPostRequest.tagIds( new LinkedHashSet<UUID>( set ) );
         }
-        createPostRequest.status( dto.getStatus() );
+        createPostRequest.title( dto.getTitle() );
 
         return createPostRequest.build();
     }
@@ -76,15 +76,15 @@ public class PostMapperImpl implements PostMapper {
 
         UpdatePostRequest.UpdatePostRequestBuilder updatePostRequest = UpdatePostRequest.builder();
 
-        updatePostRequest.id( dto.getId() );
-        updatePostRequest.title( dto.getTitle() );
-        updatePostRequest.content( dto.getContent() );
         updatePostRequest.categoryId( dto.getCategoryId() );
+        updatePostRequest.content( dto.getContent() );
+        updatePostRequest.id( dto.getId() );
+        updatePostRequest.status( dto.getStatus() );
         Set<UUID> set = dto.getTagIds();
         if ( set != null ) {
             updatePostRequest.tagIds( new LinkedHashSet<UUID>( set ) );
         }
-        updatePostRequest.status( dto.getStatus() );
+        updatePostRequest.title( dto.getTitle() );
 
         return updatePostRequest.build();
     }
