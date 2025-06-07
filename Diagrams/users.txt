@@ -1,0 +1,41 @@
+users:
+Coach
+Trainee
+---------------------
+use cases:
+login
+view community page
+view home page(trainee: check system/coach dp/fp)(coach: check trainee subscribed with him/create program/edit program)
+upload posts to community page(coach, trainee)
+________________________________________________________________________________
+
+User Descriptions:
+Coach
+The Coach is a specialized user who provides training programs, and contributes to the community. They manage their trainees and help them achieve their fitness goals.
+
+Capabilities:
+Login: Access the system using their credentials.
+
+
+View Home Page:
+Check trainees subscribed to them.
+Create and edit training programs for trainees.
+
+Edit Profile: Update personal and professional details visible to trainees.
+
+Upload Posts: Share posts, tips, and updates on the community page.
+---------------------------------
+Trainee
+The Trainee is a user seeking fitness guidance, programs, and community engagement. They interact with coaches, follow training programs, and participate in the platform’s community.
+
+Capabilities:
+Login: Access the system with trainee credentials.
+
+View Community Page: Participate in discussions and view posts shared by other users.
+
+View Home Page:
+Explore system features.
+View the coach’s displayed programs and fitness plans (DP/FP).
+
+Upload Posts: Share progress, questions, or thoughts with the community.
+

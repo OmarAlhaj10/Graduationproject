@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/fragments-general :: head}">
+    <title>Exercise List</title>
+</head>
+<body class="bg-dark text-white d-flex flex-column min-vh-100">
+<section th:replace="~{layout/fragments-general :: navbar}"></section>
+<section th:replace="~{layout/fragments-general :: sidebar}"></section>
+
+<div class="content-page bg-dark">
+    <div class="row p-3">
+        <div class="col">
+            <h2 style="color: #a9f41e;">[[#{admin.routines.user.routine.add.title}]]</h2>
+        </div>
+        <div class="col">
+            <!-- <form class="d-flex justify-content-end" style="color:#a9f41e;" role="search">
+                 <div class="input-group">
+                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                         <button class="btn btn-outline-secondary" style="color: #a9f41e" type="submit">Search</button>
+                 </div>
+             </form>-->
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table table-dark mt-5">
+            <thead>
+            <tr>
+                <th class="fs-1">[[#{admin.routines.user.routine.add.header}]]</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="exercise : ${listExercises}">
+                <td th:text="${exercise.name}"></td>
+                <td class="text-end">
+                    <div class="d-flex justify-content-end">
+                        <!-- Button to add exercise -->
+                        <a th:href="'/admin/routines/user/routine/' + ${idRoutine} + '/add/' + ${exercise.idExercise}" class="btn btn-success btn-sm me-1">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>[[#{admin.routines.user.routine.add.button}]]</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

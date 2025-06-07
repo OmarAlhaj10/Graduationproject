@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="~{layout/fragments-general :: head}"></head>
+
+    <body class="bg-dark text-white">
+
+        <section th:replace="~{layout/fragments-general :: navbar}"></section>
+        <section th:replace="~{layout/fragments-general :: sidebar}"></section> 
+
+
+        <div class="content-page bg-dark d-flex flex-column justify-content-center">
+            <div class="p-3">
+                <a type="button" class="btn btn-outline-secondary" style="color:#a9f41e" th:href="@{/user/stretches}">
+                    <i class="fas fa-arrow-left" style="color:#a9f41e"></i> 
+                </a>
+            </div>
+            
+            <h1 class="text-center mt-5" style="color: #a9f41e;">[[${stretch.name}]]</h1>
+            <div class="container text-center">
+                <iframe width="800" height="450" th:src="${stretch.url}"
+                        title="YouTube video player" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                        picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <p class="fs-5">[[${stretch.description}]]</p>
+            </div>
+
+        </div>
+    </body>
+</html>

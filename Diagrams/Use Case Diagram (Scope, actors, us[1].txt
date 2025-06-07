@@ -1,0 +1,18 @@
+Use Case Diagram (Scope, actors, use cases)
+... Use case, actor description
+....... Use case scenarios (Scenarios differ when the end status differ)   ... +  Activity Diagram
+
+....... Test Case (DDT)
+
+Wire Frames
+
+Use case description ===> Conceptual Class Diagram ==> Logical Class Diagram
+
+
+f(Use case scenarios, Logical Class Diagram) ===> Sequence Diagram
+
+
+
+Code  ===> Physical Class Diagram
+
+deployment diagram

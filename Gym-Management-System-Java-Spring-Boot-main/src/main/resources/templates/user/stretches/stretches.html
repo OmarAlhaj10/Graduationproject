@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/fragments-general :: head}"></head>
+
+<body class="bg-dark text-white d-flex flex-column min-vh-100">
+
+    <section th:replace="~{layout/fragments-general :: navbar}"></section>
+    <section th:replace="~{layout/fragments-general :: sidebar}"></section>  
+
+    <div class="content-page bg-dark">
+        <h1 class="text-center mt-5" style="color: #a9f41e; font-weight: bold; font-size: 2em;">[[#{user.stretches.header}]]</h1>
+        
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card bg-dark border border-secondary ">
+                        <div class="card-body">
+                            <table class="table table-dark table-hover">
+                                <tbody>
+                                    <tr th:each="stretch: ${stretches}">
+                                        <td class="py-4">
+                                            <a th:href="@{/user/videos/}+${stretch.idStretch}" class="text-decoration-none text-white">
+                                                <span style="font-weight: bold; font-size: 1.2em;" th:text="${stretch.name}">Stretch Name</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+ </body>
+
+</html>

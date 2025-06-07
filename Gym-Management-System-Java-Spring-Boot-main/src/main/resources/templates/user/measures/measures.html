@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/fragments-general :: head}"></head>
+
+
+<body class="bg-dark text-white d-flex flex-column min-vh-100">
+
+    <section th:replace="~{layout/fragments-general :: navbar}"></section>
+    <section th:replace="~{layout/fragments-general :: sidebar}"></section>
+
+    <section class="content-page bg-dark text-light" style="min-height: 94.2vh;">
+        
+        <div class="d-flex flex-column pt-5 px-5" style="width: 100%">
+            <div class="d-flex flex-row justify-content-between">
+                <p class="fs-5 m-0">[[#{user.measures.header}]]</p>
+            </div>
+            <div class="border-bottom border-2 pb-2 fs-5 col-md-12">
+        </div>
+        
+
+        <form th:action="@{/user/measures}" th:object="${UserMeasures}" method="POST" enctype="multipart/form-data">
+            <div class="container-fluid align-items-center p-0 pb-3">
+                <input class="invisible" type="text" name="idMedida" th:value="${UserMeasures.idMeasure}">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.weight}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="weight" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}"
+                            th:value="${UserMeasures.weight}">
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.fat}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="fat" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}"
+                            th:value="${UserMeasures.fat}">
+                    </div>
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.neck}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="neck" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.neck}">
+                    </div>
+
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.shoulders}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="shoulders" class="form-control" th:placeholder="#{user.user.measures.valorPlaceholder}" th:value="${UserMeasures.shoulders}">
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.bicep.left}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="leftBicep" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.leftBicep}">
+                    </div>
+
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.bicep.right}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="rightBicep" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.rightBicep}">
+                    </div>
+
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.waist}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="waist" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.waist}">
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.hip}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="hip" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.hip}">
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.thigh.left}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="leftThigh" class="form-control" th:placeholder="#{user.medidas.valorPlaceholder}" th:value="${UserMeasures.leftThigh}">
+                    </div>
+                </div>
+
+                <hr style="width: 100%;">
+
+                <div class="row mt-3 align-items-center">
+
+                    <div class="col-md-8">
+                        <h3 class="m-0">[[#{user.measures.thigh.right}]]</h3>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="rightThigh" class="form-control" th:placeholder="#{user.measures.valorPlaceholder}" th:value="${UserMeasures.rightThigh}">
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%;">
+                
+                <div class="d-flex justify-content-end">
+                    <div class="col-md-auto px-1 d-flex justify-content-end">
+                        <a class="btn btn-danger me-2" th:href="@{/user/measures/delete/}+${UserMeasures.idMeasure}">
+                            <i class="fa-solid fa-trash me-1"></i>[[#{user.medidas.button.eliminar}]]
+                        </a>
+                        <button class="btn btn-success ms-1" type="submit">
+                            <i class="fa-solid fa-check me-1"></i>[[#{user.measures.button.save}]]
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+    </section>
+
+</body>
+
+</html>

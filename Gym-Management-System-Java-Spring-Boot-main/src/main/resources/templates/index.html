@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/fragments-general :: head}"></head>
+
+    <body class="bg-dark text-white d-flex flex-column min-vh-100">
+
+        <section th:replace="~{layout/fragments-general :: navbar}"></section>
+        <section th:replace="~{layout/fragments-general :: sidebar}"></section>
+
+        <section class="content-page bg-dark text-light d-flex flex-column justify-content-center align-items-center" style="min-height: 94.2vh;">
+            <div class="container text-center mt-5 mb-4"> 
+                <h1>[[#{home.header}]]</h1>
+                
+                <!-- Redirect Button to localhost:8080 -->
+                <div class="mb-4">
+                    <a href="http://localhost:5173" class="btn btn-lg btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                        Go to localhost:5173
+                    </a>
+                </div>
+
+                <!-- Funcionalidades Específicas al Usuario -->
+            <div class="d-flex flex-row justify-content-center mt-2" sec:authorize="hasRole('ROLE_USER')"> 
+                <div class="card bg-dark text-white border-0" style="width: 18rem; margin-right: 15px;">
+                    <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>[[#{home.user.routines}]]</title>
+                        <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="My Routines" style="width: 100%; height: 400px; object-fit: cover;">
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">[[#{home.user.routines}]]</h5>
+                        <p class="card-text">[[#{home.user.routines.desc}]]</p>
+                        <a th:href="@{/user/routines}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                            [[#{home.user.routines.button}]]
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white border-0" style="width: 18rem; margin-right: 15px;">
+                    <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>[[#{home.user.stretches}]]</title>
+                        <img src="https://images.pexels.com/photos/3820441/pexels-photo-3820441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="stretches" style="width: 100%; height: 400px; object-fit: cover;">
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">[[#{home.user.stretches}]]</h5>
+                        <p class="card-text">[[#{home.user.stretches.desc}]]</p>
+                        <a th:href="@{/user/stretches}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                            [[#{home.user.estiramientos.button}]]
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-white border-0" style="width: 19rem;">
+                    <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>[[#{home.user.measures}]]</title>
+                        <img src="https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="My measures" style="width: 100%; height: 400px; object-fit: cover;">
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">[[#{home.user.measures}]]</h5>
+                        <p class="card-text">[[#{home.user.measures.desc}]]</p>
+                        <a th:href="@{/user/measures}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                            [[#{home.user.measures.button}]]
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- Funcionalidades específicas al Admin -->
+                <div class="sidebar-links d-flex flex-row justify-content-center" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px; margin-right: 15px;">
+                        <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>[[#{home.admin.rutinas}]]</title>
+                            <img src="https://images.pexels.com/photos/14205037/pexels-photo-14205037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Routines" style="width: 100%; height: 400px; object-fit: cover;">
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-title">[[#{home.admin.routines}]]</h5>
+                            <p class="card-text">[[#{home.admin.routines.desc}]]</p>
+                            <a th:href="@{/admin/routines}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.routines.button}]]
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px; margin-right: 15px;">
+                        <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>[[#{home.admin.users}]]</title>
+                            <img src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Users" style="width: 100%; height: 400px; object-fit: cover;">
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-title">[[#{home.admin.users}]]</h5>
+                            <p class="card-text">[[#{home.admin.users.desc}]]</p>
+                            <a th:href="@{/admin/users}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.users.button}]]
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px;">
+                        <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>[[#{home.admin.exercises}]]</title>
+                            <img src="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg" alt="Exercises" style="width: 100%; height: 400px; object-fit: cover;">
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-title">[[#{home.admin.exercises}]]</h5>
+                            <p class="card-text"> [[#{home.admin.exercises.desc}]]</p>
+                            <a th:href="@{/admin/exercises}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
+                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.exercises.button}]]
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </body>
+</html>

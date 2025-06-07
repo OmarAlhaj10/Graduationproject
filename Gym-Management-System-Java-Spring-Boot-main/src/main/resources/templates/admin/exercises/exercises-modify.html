@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/fragments-general :: head}">
+    <title>Exercise List</title>
+</head>
+<body class="bg-dark text-white d-flex flex-column min-vh-100">
+<section th:replace="~{layout/fragments-general :: navbar}"></section>
+<section th:replace="~{layout/fragments-general :: sidebar}"></section>
+
+<div class="content-page bg-dark, container-fluid d-flex flex-grow-1 px-0"  >
+    <div class="container py-3">
+        <div class="row">
+            <div class="col d-flex align-items-center">
+                <h2 style="color: #a9f41e;">[[#{admin.exercises.modify.title}]]</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="POST" th:action="@{/admin/exercises/add}" th:object="${exercise}">
+                    <div class="card bg-dark text-white">
+                        <div class="card-header">
+                            <h4 class="mb-0">[[#{admin.exercises.modify.header}]]</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" th:value="${exercise.idExercise}" name="idExercise">
+                                <label for="descripcion" style="color: #a9f41e;">[[#{admin.exercises.modify.name}]]</label>
+                                <input type="text" class="form-control" name="nombre" th:value="${exercise.name}" required="true">
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-success" style="margin-left: 738px";>[[#{admin.exercises.modify.button}]]</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

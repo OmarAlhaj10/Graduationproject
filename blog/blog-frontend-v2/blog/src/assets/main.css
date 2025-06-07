@@ -1,0 +1,15 @@
+.bckgroung_main{
+    background-color: rgb(33, 37, 41);
+}
+.bckgroung_secondary{
+    color: #dc3545;
+}
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+::selection{
+    background-color: aliceblue;
+    color: #dc3545;
+}
