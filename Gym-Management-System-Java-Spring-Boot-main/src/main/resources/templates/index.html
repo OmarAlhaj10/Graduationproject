@@ -19,16 +19,9 @@
 
         <section class="content-page bg-dark text-light d-flex flex-column justify-content-center align-items-center" style="min-height: 94.2vh;">
             <div class="container text-center mt-5 mb-4"> 
-                <h1 style="color: #dc3545;" class="mb-3">PurelyFit</h1>
-                
-                <!-- Redirect Button to localhost:8080 -->
-                <div class="mb-4">
-                    <a href="http://localhost:5173" class="btn btn-lg btn-danger" >
-                        Go to React App
-                    </a>
-                </div>
+               
 
-                <!-- Funcionalidades Específicas al Usuario -->
+                <!-- Previliges for user -->
             <div class="d-flex flex-row justify-content-center mt-2" sec:authorize="hasRole('ROLE_USER')"> 
                 <div class="card bg-dark text-white border-0" style="width: 18rem; margin-right: 15px;">
                     <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -38,9 +31,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Routines</h5>
                         <p class="card-text">A healthy routine promotes energy, prevents illness, and supports mental well-being.</p>
-                        <a th:href="@{/user/routines}" class="btn btn-danger" >
-                            Learn More
-                        </a>
+                       
                     </div>
                 </div>
 
@@ -53,9 +44,7 @@
                         <h5 class="card-title">Stretches</h5>
                         <p class="card-text">Stretches improve flexibility, reduce muscle tension, and help prevent injury.
 </p>
-                        <a th:href="@{/user/stretches}" class="btn btn-danger" >
-                            Learn More
-                        </a>
+                       
                     </div>
                 </div>
 
@@ -68,15 +57,13 @@
                         <h5 class="card-title">Measures</h5>
                         <p class="card-text">Measures track progress, guide goals, and help maintain health and performance.
 </p>
-                        <a th:href="@{/user/measures}" class="btn btn-danger" >
-                            Learn More
-                        </a>
+                      
                     </div>
                 </div>
             </div>
 
 
-                <!-- Funcionalidades específicas al Admin -->
+                <!-- Previliges for admin -->
                 <div class="sidebar-links d-flex flex-row justify-content-center" sec:authorize="hasRole('ROLE_ADMIN')">
                     <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px; margin-right: 15px;">
                         <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -86,9 +73,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Routines</h5>
                             <p class="card-text">A healthy routine promotes energy, prevents illness, and supports mental well-being.</p>
-                            <a th:href="@{/admin/routines}" class="btn btn-danger" >
-                                 Learn More
-                            </a>
+                           
                         </div>
                     </div>
 
@@ -98,10 +83,10 @@
                             <img src="../static/Photos/img4.avif" alt="Users" style="width: 100%; height: 400px; object-fit: cover;">
                         </svg>
                         <div class="card-body">
-                            <h5 class="card-title mb-5">Signed Users</h5>
-                            <a th:href="@{/admin/users}" class="btn btn-danger mt-5" >
-                                 Learn More
-                            </a>
+                            <h5 class="card-title ">Diet Plan</h5>
+                            <p>Smart eating for brain health: balanced, nutritious, mindful, and sustainable.
+</p>
+                           
                         </div>
                     </div>
 
@@ -114,9 +99,7 @@
                             <h5 class="card-title">Exercises</h5>
                             <p class="card-text"> Exercises strengthen the body, improve endurance, and support overall health.
 </p>
-                            <a th:href="@{/admin/exercises}" class="btn btn-danger">
-                                 Learn More
-                            </a>
+                           
                         </div>
                     </div>
                 </div>
