@@ -1,3 +1,789 @@
+<!--<!DOCTYPE html>-->
+
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:fragment="head">-->
+<!--    <title>PurelyFit</title>-->
+<!--    <link-->
+<!--            rel="shortcut icon"-->
+<!--            href="../../static/css/book-diet-6215693-5076252.webp"-->
+<!--            type="image/x-icon"-->
+<!--    />-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    <meta charset="UTF-8" />-->
+<!--    <link-->
+<!--            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"-->
+<!--            rel="stylesheet"-->
+<!--    />-->
+<!--    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />-->
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosBarras.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosGenerales.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <script-->
+<!--            th:src="@{/static/js/mostrarHora.js}"-->
+<!--            type="text/javascript"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"-->
+<!--            rel="stylesheet"-->
+<!--            integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"-->
+<!--            crossorigin="anonymous"-->
+<!--    />-->
+<!--    <script-->
+<!--            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"-->
+<!--            crossorigin="anonymous"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"-->
+<!--            integrity="sha512-..."-->
+<!--            crossorigin="anonymous"-->
+<!--            referrerpolicy="no-referrer"-->
+<!--    />-->
+<!--    <link rel="stylesheet" href="layout.css">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Navbar Horizontal &ndash;&gt;-->
+<!--<nav-->
+<!--        th:fragment="navbar"-->
+<!--        class="navbar p-0 vw-100  navbar-dark navbar-expand justify-content-around navbarInicio"-->
+<!--        style="z-index: 100"-->
+<!--&gt;-->
+<!--    <div id="nameTitle">-->
+<!--        <a href="#" style="font-family: Anton;" class="fs-4 text-decoration-none fw-semibold  text-inherit  text-danger">PurelyFit</a>-->
+<!--    </div>-->
+<!--    <div id="user and admin">-->
+<!--        <section th:fragment="sidebar" class="container sidebar">-->
+<!--            <div class="row row-sidebar">-->
+
+
+<!--                &lt;!&ndash;Priviligies for User&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex" sec:authorize="hasRole('ROLE_USER')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 w-25 p-1 text-decoration-none   text-center">-->
+
+<!--                        <span >Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span>Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/stretches}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none w-25 text-center">-->
+
+<!--                        <span style="width: 90px;">Stretching</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/measures}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span style="width: 90px;">Measures</span>-->
+<!--                    </a>-->
+<!--                    <a href="http://localhost:5173" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Priviligies for Admin&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex  " sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/user}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> User</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/exercises}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span style="width: 63px;">exercises</span>-->
+<!--                    </a>-->
+<!--                    <a href="http://localhost:5173" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--    <div id="LOgout">-->
+<!--        <ul class="navbar-nav col-md-2 text-start">-->
+
+<!--            <li class="nav-item dropdown me-1">-->
+<!--                <a-->
+<!--                        class="nav-link"-->
+<!--                        href="http://localhost/login"-->
+<!--                        role="button"-->
+<!--                >-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li>-->
+<!--                        <form method="post" th:action="@{/logout}" class="d-inline">-->
+<!--                            <button type="submit" class="dropdown-item">[[#{navbar.logout}]]</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<hr>-->
+
+<!--<section th:fragment="sidebar" class="container sidebar">-->
+<!--    <div class="row row-sidebar">-->
+
+
+
+<!--    </div>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:fragment="head">-->
+<!--    <title>PurelyFit</title>-->
+<!--    <link-->
+<!--            rel="shortcut icon"-->
+<!--            href="../../static/css/book-diet-6215693-5076252.webp"-->
+<!--            type="image/x-icon"-->
+<!--    />-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    <meta charset="UTF-8" />-->
+
+<!--    &lt;!&ndash; Add username as meta tag for JavaScript access &ndash;&gt;-->
+<!--    <meta th:if="${session.userName}" name="username" th:content="${session.userName}" />-->
+
+<!--    <link-->
+<!--            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"-->
+<!--            rel="stylesheet"-->
+<!--    />-->
+<!--    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />-->
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosBarras.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosGenerales.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <script-->
+<!--            th:src="@{/static/js/mostrarHora.js}"-->
+<!--            type="text/javascript"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"-->
+<!--            rel="stylesheet"-->
+<!--            integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"-->
+<!--            crossorigin="anonymous"-->
+<!--    />-->
+<!--    <script-->
+<!--            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"-->
+<!--            crossorigin="anonymous"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"-->
+<!--            integrity="sha512-..."-->
+<!--            crossorigin="anonymous"-->
+<!--            referrerpolicy="no-referrer"-->
+<!--    />-->
+<!--    <link rel="stylesheet" href="layout.css">-->
+
+<!--    &lt;!&ndash; Add the auto-login script &ndash;&gt;-->
+<!--    <script>-->
+<!--        // Auto-login functionality-->
+<!--        function redirectToCommunityWithAutoLogin() {-->
+<!--            // Get username from meta tag-->
+<!--            const metaUsername = document.querySelector('meta[name="username"]')?.getAttribute('content');-->
+
+<!--            if (metaUsername) {-->
+<!--                const email = metaUsername + '@email.com';-->
+<!--                const password = '123';-->
+
+<!--                // Store credentials for auto-login-->
+<!--                sessionStorage.setItem('autoLoginEmail', email);-->
+<!--                sessionStorage.setItem('autoLoginPassword', password);-->
+
+<!--                // Redirect to community login page-->
+<!--                window.location.href = 'http://localhost:5173/login';-->
+<!--            } else {-->
+<!--                console.error('Unable to get username for auto-login');-->
+<!--                // Fallback: redirect without auto-login-->
+<!--                window.location.href = 'http://localhost:5173/login';-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Navbar Horizontal &ndash;&gt;-->
+<!--<nav-->
+<!--        th:fragment="navbar"-->
+<!--        class="navbar p-0 vw-100  navbar-dark navbar-expand justify-content-around navbarInicio"-->
+<!--        style="z-index: 100"-->
+<!--&gt;-->
+<!--    <div id="nameTitle">-->
+<!--        <a href="#" style="font-family: Anton;" class="fs-4 text-decoration-none fw-semibold  text-inherit  text-danger">PurelyFit</a>-->
+<!--    </div>-->
+<!--    <div id="user and admin">-->
+<!--        <section th:fragment="sidebar" class="container sidebar">-->
+<!--            <div class="row row-sidebar">-->
+
+
+<!--                &lt;!&ndash;Priviligies for User&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex" sec:authorize="hasRole('ROLE_USER')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 w-25 p-1 text-decoration-none   text-center">-->
+<!--                        <span >Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/stretches}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none w-25 text-center">-->
+<!--                        <span style="width: 90px;">Stretching</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/measures}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 90px;">Measures</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Priviligies for Admin&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex  " sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/user}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> User</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/exercises}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 63px;">exercises</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button for Admin with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--    <div id="LOgout">-->
+<!--        <ul class="navbar-nav col-md-2 text-start">-->
+
+<!--            <li class="nav-item dropdown me-1">-->
+<!--                <a-->
+<!--                        class="nav-link"-->
+<!--                        href="http://localhost/login"-->
+<!--                        role="button"-->
+<!--                >-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li>-->
+<!--                        <form method="post" th:action="@{/logout}" class="d-inline">-->
+<!--                            <button type="submit" class="dropdown-item">[[#{navbar.logout}]]</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<hr>-->
+
+<!--&lt;!&ndash;Sidebar vertical estandarizado a para cada rol&ndash;&gt;-->
+<!--<section th:fragment="sidebar" class="container sidebar">-->
+<!--    <div class="row row-sidebar">-->
+<!--    </div>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:fragment="head">-->
+<!--    <title>PurelyFit</title>-->
+<!--    <link-->
+<!--            rel="shortcut icon"-->
+<!--            href="../../static/css/book-diet-6215693-5076252.webp"-->
+<!--            type="image/x-icon"-->
+<!--    />-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    <meta charset="UTF-8" />-->
+
+<!--    &lt;!&ndash; Add username as meta tag for JavaScript access &ndash;&gt;-->
+<!--    <meta th:if="${session.userName}" name="username" th:content="${session.userName}" />-->
+
+<!--    <link-->
+<!--            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"-->
+<!--            rel="stylesheet"-->
+<!--    />-->
+<!--    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />-->
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosBarras.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosGenerales.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <script-->
+<!--            th:src="@{/static/js/mostrarHora.js}"-->
+<!--            type="text/javascript"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"-->
+<!--            rel="stylesheet"-->
+<!--            integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"-->
+<!--            crossorigin="anonymous"-->
+<!--    />-->
+<!--    <script-->
+<!--            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"-->
+<!--            crossorigin="anonymous"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"-->
+<!--            integrity="sha512-..."-->
+<!--            crossorigin="anonymous"-->
+<!--            referrerpolicy="no-referrer"-->
+<!--    />-->
+<!--    <link rel="stylesheet" href="layout.css">-->
+
+<!--    &lt;!&ndash; Add the auto-login script &ndash;&gt;-->
+<!--    <script>-->
+<!--        // Auto-login functionality-->
+<!--        function redirectToCommunityWithAutoLogin() {-->
+<!--            console.log('redirectToCommunityWithAutoLogin called');-->
+
+<!--            // Get username from meta tag-->
+<!--            const metaUsername = document.querySelector('meta[name="username"]')?.getAttribute('content');-->
+<!--            console.log('Found username:', metaUsername);-->
+
+<!--            if (metaUsername) {-->
+<!--                const email = metaUsername + '@email.com';-->
+<!--                const password = '123';-->
+
+<!--                console.log('Setting credentials:', { email, password });-->
+
+<!--                // Store credentials for auto-login-->
+<!--                sessionStorage.setItem('autoLoginEmail', email);-->
+<!--                sessionStorage.setItem('autoLoginPassword', password);-->
+
+<!--                // Verify storage-->
+<!--                console.log('Stored in sessionStorage:', {-->
+<!--                    email: sessionStorage.getItem('autoLoginEmail'),-->
+<!--                    password: sessionStorage.getItem('autoLoginPassword')-->
+<!--                });-->
+
+<!--                // Redirect to community login page-->
+<!--                console.log('Redirecting to community login...');-->
+<!--                window.location.href = 'http://localhost:5173/login';-->
+<!--            } else {-->
+<!--                console.error('Unable to get username for auto-login - meta tag not found');-->
+<!--                console.log('Available meta tags:', document.querySelectorAll('meta'));-->
+<!--                // Fallback: redirect without auto-login-->
+<!--                window.location.href = 'http://localhost:5173/login';-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Navbar Horizontal &ndash;&gt;-->
+<!--<nav-->
+<!--        th:fragment="navbar"-->
+<!--        class="navbar p-0 vw-100  navbar-dark navbar-expand justify-content-around navbarInicio"-->
+<!--        style="z-index: 100"-->
+<!--&gt;-->
+<!--    <div id="nameTitle">-->
+<!--        <a href="#" style="font-family: Anton;" class="fs-4 text-decoration-none fw-semibold  text-inherit  text-danger">PurelyFit</a>-->
+<!--    </div>-->
+<!--    <div id="user and admin">-->
+<!--        <section th:fragment="sidebar" class="container sidebar">-->
+<!--            <div class="row row-sidebar">-->
+
+
+<!--                &lt;!&ndash;Priviligies for User&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex" sec:authorize="hasRole('ROLE_USER')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 w-25 p-1 text-decoration-none   text-center">-->
+<!--                        <span >Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/stretches}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none w-25 text-center">-->
+<!--                        <span style="width: 90px;">Stretching</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/measures}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 90px;">Measures</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Priviligies for Admin&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex  " sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/user}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> User</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/exercises}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 63px;">exercises</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button for Admin with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--    <div id="LOgout">-->
+<!--        <ul class="navbar-nav col-md-2 text-start">-->
+
+<!--            <li class="nav-item dropdown me-1">-->
+<!--                <a-->
+<!--                        class="nav-link"-->
+<!--                        href="http://localhost/login"-->
+<!--                        role="button"-->
+<!--                >-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li>-->
+<!--                        <form method="post" th:action="@{/logout}" class="d-inline">-->
+<!--                            <button type="submit" class="dropdown-item">[[#{navbar.logout}]]</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<hr>-->
+
+<!--&lt;!&ndash;Sidebar vertical estandarizado a para cada rol&ndash;&gt;-->
+<!--<section th:fragment="sidebar" class="container sidebar">-->
+<!--    <div class="row row-sidebar">-->
+<!--    </div>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:fragment="head">-->
+<!--    <title>PurelyFit</title>-->
+<!--    <link-->
+<!--            rel="shortcut icon"-->
+<!--            href="../../static/css/book-diet-6215693-5076252.webp"-->
+<!--            type="image/x-icon"-->
+<!--    />-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    <meta charset="UTF-8" />-->
+
+<!--    &lt;!&ndash; Add username as meta tag for JavaScript access &ndash;&gt;-->
+<!--    <meta th:if="${session.userName}" name="username" th:content="${session.userName}" />-->
+
+<!--    <link-->
+<!--            th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"-->
+<!--            rel="stylesheet"-->
+<!--    />-->
+<!--    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />-->
+<!--    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>-->
+<!--    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosBarras.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <link-->
+<!--            th:href="@{/static/css/estilosGenerales.css}"-->
+<!--            rel="stylesheet"-->
+<!--            type="text/css"-->
+<!--    />-->
+<!--    <script-->
+<!--            th:src="@{/static/js/mostrarHora.js}"-->
+<!--            type="text/javascript"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"-->
+<!--            rel="stylesheet"-->
+<!--            integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"-->
+<!--            crossorigin="anonymous"-->
+<!--    />-->
+<!--    <script-->
+<!--            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"-->
+<!--            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"-->
+<!--            crossorigin="anonymous"-->
+<!--    ></script>-->
+<!--    <link-->
+<!--            rel="stylesheet"-->
+<!--            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"-->
+<!--            integrity="sha512-..."-->
+<!--            crossorigin="anonymous"-->
+<!--            referrerpolicy="no-referrer"-->
+<!--    />-->
+<!--    <link rel="stylesheet" href="layout.css">-->
+
+<!--    &lt;!&ndash; Add the auto-login script &ndash;&gt;-->
+<!--    <script>-->
+<!--        // Auto-login functionality-->
+<!--        function redirectToCommunityWithAutoLogin() {-->
+<!--            console.log('redirectToCommunityWithAutoLogin called');-->
+
+<!--            // Get username from meta tag-->
+<!--            const metaUsername = document.querySelector('meta[name="username"]')?.getAttribute('content');-->
+<!--            console.log('Found username:', metaUsername);-->
+
+<!--            if (metaUsername) {-->
+<!--                const email = metaUsername + '@email.com';-->
+<!--                const password = '123';-->
+
+<!--                console.log('Setting credentials:', { email, password });-->
+
+<!--                // Store credentials for auto-login (Method 1)-->
+<!--                sessionStorage.setItem('autoLoginEmail', email);-->
+<!--                sessionStorage.setItem('autoLoginPassword', password);-->
+
+<!--                // Also try localStorage as backup (Method 2)-->
+<!--                localStorage.setItem('autoLoginEmail', email);-->
+<!--                localStorage.setItem('autoLoginPassword', password);-->
+
+<!--                // Verify storage-->
+<!--                console.log('Stored in sessionStorage:', {-->
+<!--                    email: sessionStorage.getItem('autoLoginEmail'),-->
+<!--                    password: sessionStorage.getItem('autoLoginPassword')-->
+<!--                });-->
+
+<!--                // Method 3: Pass via URL parameters as additional backup-->
+<!--                const params = new URLSearchParams();-->
+<!--                params.set('autoEmail', email);-->
+<!--                params.set('autoPassword', password);-->
+
+<!--                // Redirect to community login page with multiple methods-->
+<!--                console.log('Redirecting to community login...');-->
+<!--                window.location.href = `http://localhost:5173/login?${params.toString()}`;-->
+<!--            } else {-->
+<!--                console.error('Unable to get username for auto-login - meta tag not found');-->
+<!--                console.log('Available meta tags:', document.querySelectorAll('meta'));-->
+<!--                // Fallback: redirect without auto-login-->
+<!--                window.location.href = 'http://localhost:5173/login';-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Navbar Horizontal &ndash;&gt;-->
+<!--<nav-->
+<!--        th:fragment="navbar"-->
+<!--        class="navbar p-0 vw-100  navbar-dark navbar-expand justify-content-around navbarInicio"-->
+<!--        style="z-index: 100"-->
+<!--&gt;-->
+<!--    <div id="nameTitle">-->
+<!--        <a href="#" style="font-family: Anton;" class="fs-4 text-decoration-none fw-semibold  text-inherit  text-danger">PurelyFit</a>-->
+<!--    </div>-->
+<!--    <div id="user and admin">-->
+<!--        <section th:fragment="sidebar" class="container sidebar">-->
+<!--            <div class="row row-sidebar">-->
+
+
+<!--                &lt;!&ndash;Priviligies for User&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex" sec:authorize="hasRole('ROLE_USER')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 w-25 p-1 text-decoration-none   text-center">-->
+<!--                        <span >Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/stretches}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none w-25 text-center">-->
+<!--                        <span style="width: 90px;">Stretching</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/user/measures}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 90px;">Measures</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash;Priviligies for Admin&ndash;&gt;-->
+<!--                <div class="sidebar-links d-flex  " sec:authorize="hasRole('ROLE_ADMIN')">-->
+<!--                    <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span>Home </span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> Routine</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/user}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span> User</span>-->
+<!--                    </a>-->
+
+<!--                    <a th:href="@{/admin/exercises}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 63px;">exercises</span>-->
+<!--                    </a>-->
+
+<!--                    &lt;!&ndash; Modified Community button for Admin with onclick event &ndash;&gt;-->
+<!--                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span style="width: 82px;">Community</span>-->
+<!--                    </a>-->
+
+<!--                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">-->
+<!--                        <span class="ms-2" style="width: 75px;">Diet Plan</span>-->
+<!--                    </a>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </section>-->
+<!--    </div>-->
+<!--    <div id="LOgout">-->
+<!--        <ul class="navbar-nav col-md-2 text-start">-->
+
+<!--            <li class="nav-item dropdown me-1">-->
+<!--                <a-->
+<!--                        class="nav-link"-->
+<!--                        href="http://localhost/login"-->
+<!--                        role="button"-->
+<!--                >-->
+<!--                    <i class="fas fa-user"></i>-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li>-->
+<!--                        <form method="post" th:action="@{/logout}" class="d-inline">-->
+<!--                            <button type="submit" class="dropdown-item">[[#{navbar.logout}]]</button>-->
+<!--                        </form>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--        </ul>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<hr>-->
+
+<!--&lt;!&ndash;Sidebar vertical estandarizado a para cada rol&ndash;&gt;-->
+<!--<section th:fragment="sidebar" class="container sidebar">-->
+<!--    <div class="row row-sidebar">-->
+<!--    </div>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
@@ -11,6 +797,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    <meta charset="UTF-8" />
+
+    <!-- Add username as meta tag for JavaScript access -->
+    <meta th:if="${session.userName}" name="username" th:content="${session.userName}" />
+
     <link
             th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
             rel="stylesheet"
@@ -52,6 +842,57 @@
             referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="layout.css">
+
+    <!-- Add the auto-login script -->
+    <script>
+        // Auto-login functionality
+        function redirectToCommunityWithAutoLogin() {
+            console.log('redirectToCommunityWithAutoLogin called');
+
+            // Get username from meta tag
+            const metaUsername = document.querySelector('meta[name="username"]')?.getAttribute('content');
+            console.log('Found username:', metaUsername);
+
+            if (metaUsername) {
+                // Extract first name only (split by space and take first part)
+                const firstName = metaUsername.split(' ')[0];
+                console.log('Full username:', metaUsername, 'First name:', firstName);
+
+                const email = firstName + '@email.com';
+                const password = '123';
+
+                console.log('Setting credentials:', { email, password });
+
+                // Store credentials for auto-login (Method 1)
+                sessionStorage.setItem('autoLoginEmail', email);
+                sessionStorage.setItem('autoLoginPassword', password);
+
+                // Also try localStorage as backup (Method 2)
+                localStorage.setItem('autoLoginEmail', email);
+                localStorage.setItem('autoLoginPassword', password);
+
+                // Verify storage
+                console.log('Stored in sessionStorage:', {
+                    email: sessionStorage.getItem('autoLoginEmail'),
+                    password: sessionStorage.getItem('autoLoginPassword')
+                });
+
+                // Method 3: Pass via URL parameters as additional backup
+                const params = new URLSearchParams();
+                params.set('autoEmail', email);
+                params.set('autoPassword', password);
+
+                // Redirect to community login page with multiple methods
+                console.log('Redirecting to community login...');
+                window.location.href = `http://localhost:5173/login?${params.toString()}`;
+            } else {
+                console.error('Unable to get username for auto-login - meta tag not found');
+                console.log('Available meta tags:', document.querySelectorAll('meta'));
+                // Fallback: redirect without auto-login
+                window.location.href = 'http://localhost:5173/login';
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -72,30 +913,27 @@
                 <!--Priviligies for User-->
                 <div class="sidebar-links d-flex" sec:authorize="hasRole('ROLE_USER')">
                     <a th:href="@{/}" class="card border-0 bg-transparent text-white m-2 w-25 p-1 text-decoration-none   text-center">
-
                         <span >Home </span>
                     </a>
 
                     <a th:href="@{/user/routines}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
-
                         <span>Routine</span>
                     </a>
 
                     <a th:href="@{/user/stretches}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none w-25 text-center">
-
                         <span style="width: 90px;">Stretching</span>
                     </a>
 
                     <a th:href="@{/user/measures}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
-
                         <span style="width: 90px;">Measures</span>
                     </a>
-                    <a href="http://localhost:5173" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
 
+                    <!-- Modified Community button with onclick event -->
+                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
                         <span style="width: 82px;">Community</span>
                     </a>
-                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
 
+                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
                         <span class="ms-2" style="width: 75px;">Diet Plan</span>
                     </a>
                 </div>
@@ -115,19 +953,18 @@
                     </a>
 
                     <a th:href="@{/admin/exercises}" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
-
                         <span style="width: 63px;">exercises</span>
                     </a>
-                    <a href="http://localhost:5173" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
 
+                    <!-- Modified Community button for Admin with onclick event -->
+                    <a href="javascript:void(0)" onclick="redirectToCommunityWithAutoLogin()" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
                         <span style="width: 82px;">Community</span>
                     </a>
-                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
 
+                    <a href="http://localhost:8501" class="card border-0 bg-transparent text-white m-2 p-1 text-decoration-none  w-25 text-center">
                         <span class="ms-2" style="width: 75px;">Diet Plan</span>
                     </a>
                 </div>
-
 
             </div>
         </section>
@@ -160,9 +997,6 @@
 <!--Sidebar vertical estandarizado a para cada rol-->
 <section th:fragment="sidebar" class="container sidebar">
     <div class="row row-sidebar">
-
-
-
     </div>
 </section>
 </body>
