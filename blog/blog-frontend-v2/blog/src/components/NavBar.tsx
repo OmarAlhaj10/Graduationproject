@@ -232,7 +232,7 @@ interface NavBarProps {
   userProfile?: {
     name: string;
     avatar?: string;
-    username?: string; // Added username to the interface
+    username?: string;
   };
   onLogout: () => void;
 }
@@ -251,51 +251,45 @@ const NavBar: React.FC<NavBarProps> = ({
     { name: 'Tags', path: '/tags' },
   ];
 
+  // Function to extract username from email (get part before @)
+  const extractUsername = (email: string): string => {
+    if (email.includes('@')) {
+      return email.split('@')[0];
+    }
+    return email;
+  };
+
   // Function to handle auto-login to gym system
   const handleGymLogin = () => {
-    // Try multiple sources for username
-    let username = userProfile?.username || 
-                   userProfile?.name || 
-                   localStorage.getItem('username') || 
-                   localStorage.getItem('currentUser') ||
-                   sessionStorage.getItem('username') ||
-                   sessionStorage.getItem('currentUser');
+    // Try multiple sources for username/email
+    let userIdentifier = userProfile?.username || 
+                        userProfile?.name || 
+                        localStorage.getItem('username') || 
+                        localStorage.getItem('currentUser') ||
+                        sessionStorage.getItem('username') ||
+                        sessionStorage.getItem('currentUser');
 
     // If still no username, try to extract from JWT token if available
-    if (!username) {
+    if (!userIdentifier) {
       const token = localStorage.getItem('token') || localStorage.getItem('authToken');
       if (token) {
         try {
           const payload = JSON.parse(atob(token.split('.')[1]));
-          username = payload.sub || payload.username || payload.user || payload.name;
+          userIdentifier = payload.sub || payload.username || payload.user || payload.name || payload.email;
         } catch (e) {
           console.log('Could not parse token for username');
         }
       }
     }
 
-    if (username) {
-      console.log('Opening gym login with username:', username);
+    if (userIdentifier) {
+      // Extract just the username part (before @) if it's an email
+      const username = extractUsername(userIdentifier);
+      console.log('Redirecting to gym login with username:', username);
       
-      // Method 1: URL parameters approach
-      const loginUrl = `http://localhost/login?auto=true&username=${encodeURIComponent(username)}&password=123`;
-      const newWindow = window.open(loginUrl, '_blank');
-      
-      // Method 2: PostMessage fallback (if URL method doesn't work)
-      if (newWindow) {
-        // Wait a bit for the page to load, then send the login data
-        setTimeout(() => {
-          try {
-            newWindow.postMessage({
-              type: 'AUTO_LOGIN',
-              username: username,
-              password: '123'
-            }, 'http://localhost');
-          } catch (e) {
-            console.log('PostMessage failed:', e);
-          }
-        }, 1000);
-      }
+      // Redirect to the same tab with auto-login parameters
+      const loginUrl = `http://localhost:80/login?auto=true&username=${encodeURIComponent(username)}&password=123`;
+      window.location.href = loginUrl;
     } else {
       console.error('Username not available for auto-login');
       // For debugging: let's see what we have
@@ -310,7 +304,7 @@ const NavBar: React.FC<NavBarProps> = ({
       // Fallback: redirect to gym login page manually
       const confirmManualLogin = confirm('Username not available for auto-login. Would you like to go to the gym login page manually?');
       if (confirmManualLogin) {
-        window.open('http://localhost/login', '_blank');
+        window.location.href = 'http://localhost:80/login';
       }
     }
   };
@@ -321,7 +315,6 @@ const NavBar: React.FC<NavBarProps> = ({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       className="mb-6 bckgroung_main"
-      
     >
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
@@ -383,14 +376,14 @@ const NavBar: React.FC<NavBarProps> = ({
             </NavbarItem>
             <NavbarItem>
               <Button
-                                  className='text-white bg-transparent hover:bg-transparent '
-                  variant="flat"
-                  onClick={() => {
-                    const nickname = 'zeit';
-                    const realname = 'ZEIT Dev';
-                    const url = `http://localhost:8501/?nickname=${encodeURIComponent(nickname)}&realname=${encodeURIComponent(realname)}`;
-                    window.location.href = url;
-                  }}
+                className='text-white bg-transparent hover:bg-transparent '
+                variant="flat"
+                onClick={() => {
+                  const nickname = 'zeit';
+                  const realname = 'ZEIT Dev';
+                  const url = `http://localhost:8501/?nickname=${encodeURIComponent(nickname)}&realname=${encodeURIComponent(realname)}`;
+                  window.location.href = url;
+                }}
               >
                 Diet Plan
               </Button>
