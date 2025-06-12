@@ -1,0 +1,12 @@
+body{
+    background-color: #262730;
+    font-family: sans-serif;
+}
+.btn-myself{
+    color: #dc3545;
+    border-color:#dc3545 ;
+}
+.btn-myself:hover{
+    background-color: #dc3545;
+    color: white;
+}

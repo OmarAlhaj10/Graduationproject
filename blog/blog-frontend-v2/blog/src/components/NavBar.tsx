@@ -89,7 +89,7 @@ const NavBar: React.FC<NavBarProps> = ({
               <Button
                 as={Link}
                 to="/posts/drafts"
-                className='ms-3 text-white bg-transparent hover:bg-transparent hover:text-red-600 hover:scale-125'
+                className='ms-3 text-white bg-transparent hover:bg-transparent '
                 variant="flat"
                 startContent={<BookDashed  size={16} />}
               >
@@ -100,7 +100,7 @@ const NavBar: React.FC<NavBarProps> = ({
               <Button
                 as={Link}
                 to="/posts/new"
-                className='text-white bg-transparent hover:bg-transparent hover:text-red-600 hover:scale-125'
+                className='text-white bg-transparent hover:bg-transparent '
                 variant="flat"
                 startContent={<Plus size={16} />}
               >
@@ -109,12 +109,12 @@ const NavBar: React.FC<NavBarProps> = ({
             </NavbarItem>
             <NavbarItem>
               <Button
-                                  className='text-white bg-transparent hover:bg-transparent hover:text-red-600 hover:scale-125'
+                                  className='text-white bg-transparent hover:bg-transparent '
                   variant="flat"
                   onClick={() => {
                     const nickname = 'zeit';
                     const realname = 'ZEIT Dev';
-                    const url = `http://localhost:8181/?nickname=${encodeURIComponent(nickname)}&realname=${encodeURIComponent(realname)}`;
+                    const url = `http://localhost:8501/?nickname=${encodeURIComponent(nickname)}&realname=${encodeURIComponent(realname)}`;
                     window.location.href = url;
                   }}
               >
@@ -133,11 +133,11 @@ const NavBar: React.FC<NavBarProps> = ({
                 <input type="hidden" name="password" value="123" />
               </form>
               <Button
-                                  className='text-white bg-transparent hover:bg-transparent hover:text-red-600 hover:scale-125'
+                                  className='text-white bg-transparent hover:bg-transparent '
                   variant="flat"
                   onClick={() => document.getElementById('autoLoginForm')?.submit()}
               >
-                Login to Site 2
+                Exercise
               </Button>
             </NavbarItem>
 

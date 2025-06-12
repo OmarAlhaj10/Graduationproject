@@ -30,12 +30,52 @@ public class SecurityConfig {
     public UserDetailsService  userDetailsService(UserRepository userRepository) {
         BlogUserDetailService blogUserDetailService = new BlogUserDetailService(userRepository);
 
-        String email = "user@test.com";
+        String email = "admin@email.com";
         userRepository.findByEmail(email).orElseGet(() -> {
             User newUser = User.builder()
-                    .name("Test User")
+                    .name("admin")
                     .email(email)
-                    .password(passwordEncoder().encode("password"))
+                    .password(passwordEncoder().encode("123"))
+                    .build();
+            return userRepository.save(newUser);
+        });
+
+        String email2 = "omar@email.com";
+        userRepository.findByEmail(email2).orElseGet(() -> {
+            User newUser = User.builder()
+                    .name("omar")
+                    .email(email2)
+                    .password(passwordEncoder().encode("123"))
+                    .build();
+            return userRepository.save(newUser);
+        });
+
+        String email3 = "ali@email.com";
+        userRepository.findByEmail(email3).orElseGet(() -> {
+            User newUser = User.builder()
+                    .name("ali")
+                    .email(email3)
+                    .password(passwordEncoder().encode("123"))
+                    .build();
+            return userRepository.save(newUser);
+        });
+
+        String email4 = "seif@email.com";
+        userRepository.findByEmail(email4).orElseGet(() -> {
+            User newUser = User.builder()
+                    .name("seif")
+                    .email(email4)
+                    .password(passwordEncoder().encode("123"))
+                    .build();
+            return userRepository.save(newUser);
+        });
+
+        String email5 = "shehab@email.com";
+        userRepository.findByEmail(email5).orElseGet(() -> {
+            User newUser = User.builder()
+                    .name("shehab")
+                    .email(email5)
+                    .password(passwordEncoder().encode("123"))
                     .build();
             return userRepository.save(newUser);
         });

@@ -1,0 +1,13 @@
+.card{
+    transition: all 1s;
+}
+
+.card:hover {
+    
+    transform: scale(1.1);
+    
+}
+.card:hover a{
+    color: red;
+
+}

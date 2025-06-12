@@ -15,4 +15,4 @@ EXPOSE 8501
 
 ENTRYPOINT ["streamlit","run"]
 
-CMD ["Hello.py"]
+CMD ["1_💪_Diet_Recommendation.py"]

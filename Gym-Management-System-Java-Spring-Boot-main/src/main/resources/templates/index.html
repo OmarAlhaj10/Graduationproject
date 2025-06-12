@@ -3,21 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="~{layout/fragments-general :: head}"></head>
+    <head th:replace="~{layout/fragments-general :: head}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="../static/css/gym.css">
+        <title>PurelyFit</title>
+        <link rel="shortcut icon" href="../static/css/book-diet-6215693-5076252.webp" type="image/x-icon">
+        
+    </head>
 
-    <body class="bg-dark text-white d-flex flex-column min-vh-100">
+    <body class="bg-dark  text-white d-flex flex-column min-vh-100">
 
         <section th:replace="~{layout/fragments-general :: navbar}"></section>
         <section th:replace="~{layout/fragments-general :: sidebar}"></section>
 
         <section class="content-page bg-dark text-light d-flex flex-column justify-content-center align-items-center" style="min-height: 94.2vh;">
             <div class="container text-center mt-5 mb-4"> 
-                <h1>[[#{home.header}]]</h1>
+                <h1 style="color: #dc3545;" class="mb-3">PurelyFit</h1>
                 
                 <!-- Redirect Button to localhost:8080 -->
                 <div class="mb-4">
-                    <a href="http://localhost:5173" class="btn btn-lg btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                        Go to localhost:5173
+                    <a href="http://localhost:5173" class="btn btn-lg btn-danger" >
+                        Go to React App
                     </a>
                 </div>
 
@@ -25,14 +32,14 @@
             <div class="d-flex flex-row justify-content-center mt-2" sec:authorize="hasRole('ROLE_USER')"> 
                 <div class="card bg-dark text-white border-0" style="width: 18rem; margin-right: 15px;">
                     <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>[[#{home.user.routines}]]</title>
+                        <title>User Routines</title>
                         <img src="https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="My Routines" style="width: 100%; height: 400px; object-fit: cover;">
                     </svg>
                     <div class="card-body">
-                        <h5 class="card-title">[[#{home.user.routines}]]</h5>
-                        <p class="card-text">[[#{home.user.routines.desc}]]</p>
-                        <a th:href="@{/user/routines}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                            [[#{home.user.routines.button}]]
+                        <h5 class="card-title">Routines</h5>
+                        <p class="card-text">A healthy routine promotes energy, prevents illness, and supports mental well-being.</p>
+                        <a th:href="@{/user/routines}" class="btn btn-danger" >
+                            Learn More
                         </a>
                     </div>
                 </div>
@@ -40,13 +47,14 @@
                 <div class="card bg-dark text-white border-0" style="width: 18rem; margin-right: 15px;">
                     <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <title>[[#{home.user.stretches}]]</title>
-                        <img src="https://images.pexels.com/photos/3820441/pexels-photo-3820441.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="stretches" style="width: 100%; height: 400px; object-fit: cover;">
+                        <img src="../static/Photos/img1.jpg" alt="stretches" style="width: 100%; height: 400px; object-fit: cover;">
                     </svg>
                     <div class="card-body">
-                        <h5 class="card-title">[[#{home.user.stretches}]]</h5>
-                        <p class="card-text">[[#{home.user.stretches.desc}]]</p>
-                        <a th:href="@{/user/stretches}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                            [[#{home.user.estiramientos.button}]]
+                        <h5 class="card-title">Stretches</h5>
+                        <p class="card-text">Stretches improve flexibility, reduce muscle tension, and help prevent injury.
+</p>
+                        <a th:href="@{/user/stretches}" class="btn btn-danger" >
+                            Learn More
                         </a>
                     </div>
                 </div>
@@ -54,13 +62,14 @@
                 <div class="card bg-dark text-white border-0" style="width: 19rem;">
                     <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
                         <title>[[#{home.user.measures}]]</title>
-                        <img src="https://images.pexels.com/photos/3757376/pexels-photo-3757376.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="My measures" style="width: 100%; height: 400px; object-fit: cover;">
+                        <img src="../static/Photos/img2.avif" alt="My measures" style="width: 100%; height: 400px; object-fit: cover;">
                     </svg>
                     <div class="card-body">
-                        <h5 class="card-title">[[#{home.user.measures}]]</h5>
-                        <p class="card-text">[[#{home.user.measures.desc}]]</p>
-                        <a th:href="@{/user/measures}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                            [[#{home.user.measures.button}]]
+                        <h5 class="card-title">Measures</h5>
+                        <p class="card-text">Measures track progress, guide goals, and help maintain health and performance.
+</p>
+                        <a th:href="@{/user/measures}" class="btn btn-danger" >
+                            Learn More
                         </a>
                     </div>
                 </div>
@@ -72,13 +81,13 @@
                     <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px; margin-right: 15px;">
                         <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>[[#{home.admin.rutinas}]]</title>
-                            <img src="https://images.pexels.com/photos/14205037/pexels-photo-14205037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Routines" style="width: 100%; height: 400px; object-fit: cover;">
+                            <img src="../static/Photos/img3.webp" alt="Routines" style="width: 100%; height: 400px; object-fit: cover;">
                         </svg>
                         <div class="card-body">
-                            <h5 class="card-title">[[#{home.admin.routines}]]</h5>
-                            <p class="card-text">[[#{home.admin.routines.desc}]]</p>
-                            <a th:href="@{/admin/routines}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.routines.button}]]
+                            <h5 class="card-title">Routines</h5>
+                            <p class="card-text">A healthy routine promotes energy, prevents illness, and supports mental well-being.</p>
+                            <a th:href="@{/admin/routines}" class="btn btn-danger" >
+                                 Learn More
                             </a>
                         </div>
                     </div>
@@ -86,13 +95,12 @@
                     <div class="card bg-dark text-white border-0" style="width: 18rem; margin-bottom: 15px; margin-right: 15px;">
                         <svg class="bd-placeholder-img card-img-top" width="50%" height="50" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>[[#{home.admin.users}]]</title>
-                            <img src="https://images.pexels.com/photos/1552249/pexels-photo-1552249.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Users" style="width: 100%; height: 400px; object-fit: cover;">
+                            <img src="../static/Photos/img4.avif" alt="Users" style="width: 100%; height: 400px; object-fit: cover;">
                         </svg>
                         <div class="card-body">
-                            <h5 class="card-title">[[#{home.admin.users}]]</h5>
-                            <p class="card-text">[[#{home.admin.users.desc}]]</p>
-                            <a th:href="@{/admin/users}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.users.button}]]
+                            <h5 class="card-title mb-5">Signed Users</h5>
+                            <a th:href="@{/admin/users}" class="btn btn-danger mt-5" >
+                                 Learn More
                             </a>
                         </div>
                     </div>
@@ -103,10 +111,11 @@
                             <img src="https://images.pexels.com/photos/414029/pexels-photo-414029.jpeg" alt="Exercises" style="width: 100%; height: 400px; object-fit: cover;">
                         </svg>
                         <div class="card-body">
-                            <h5 class="card-title">[[#{home.admin.exercises}]]</h5>
-                            <p class="card-text"> [[#{home.admin.exercises.desc}]]</p>
-                            <a th:href="@{/admin/exercises}" class="btn btn-outline-secondary" style="color:#a9f41e; border-color: #a9f41e;">
-                                <i class="" style="color:#a9f41e"></i> [[#{home.admin.exercises.button}]]
+                            <h5 class="card-title">Exercises</h5>
+                            <p class="card-text"> Exercises strengthen the body, improve endurance, and support overall health.
+</p>
+                            <a th:href="@{/admin/exercises}" class="btn btn-danger">
+                                 Learn More
                             </a>
                         </div>
                     </div>

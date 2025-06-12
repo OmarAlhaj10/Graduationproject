@@ -152,8 +152,8 @@ const PostForm: React.FC<PostFormProps> = ({
     .slice(0, 5);
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <Card>
+    <form onSubmit={handleSubmit} className="space-y-6  ">
+      <Card className=''>
         <CardBody className="space-y-4">
           <div className="space-y-2">
             <Input
@@ -255,7 +255,7 @@ const PostForm: React.FC<PostFormProps> = ({
                 <Redo size={16} />
               </Button>
             </div>
-            <EditorContent editor={editor} />
+            <EditorContent className=' ' editor={editor} />
             {errors.content && (
               <div className="text-danger text-sm">{errors.content}</div>
             )}
